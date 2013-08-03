@@ -15,5 +15,7 @@ RUN wget -P /tmp/ $TEAM_CITY_BASE_URL/$TEAM_CITY_PACKAGE
 RUN tar xfz /tmp/$TEAM_CITY_PACKAGE -C $TEAM_CITY_INSTALL_DIR
 RUN rm /tmp/$TEAM_CITY_PACKAGE
 
+ADD https://github.com/Diggs/docker-teamcity-agent/blob/master/agent.sh $TEAM_CITY_INSTALL_DIR/TeamCity/
+
 EXPOSE 9090
-ENTRYPOINT .$TEAM_CITY_INSTALL_DIR/TeamCity/buildAgent/bin/agent.sh run
+ENTRYPOINT .$TEAM_CITY_INSTALL_DIR/TeamCity/agent.sh run
